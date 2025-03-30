@@ -49,20 +49,5 @@ This project is built using modern web technologies:
 
 ---
 
-## 🌍 How to Deploy  
 
-You can deploy your project using **Netlify, Vercel, or GitHub Pages**.  
-
-For example, using Vercel:  
-```sh
-# Install Vercel CLI
-npm install -g vercel
-
-# Deploy the project
-vercel
-```
-
----
-
-🔥 **Enjoy your Ghibli-inspired productivity journey!** ✨
 
