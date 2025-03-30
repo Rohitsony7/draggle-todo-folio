@@ -50,33 +50,33 @@ const GhibliBackground: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Determine background colors based on time of day
+  // Determine background colors based on time of day - updated to Lovable-style colors
   const getBgColors = () => {
     switch (timeOfDay) {
       case "morning":
         return {
-          sky: "from-ghibli-sky/70 to-ghibli-field/60",
-          ground: "from-ghibli-field/50 to-ghibli-forest/40",
+          sky: "from-blue-900/80 via-purple-800/50 to-purple-600/40",
+          ground: "from-purple-900/30 to-blue-800/20",
         };
       case "day":
         return {
-          sky: "from-ghibli-sky to-ghibli-sky/60",
-          ground: "from-ghibli-forest/70 to-ghibli-earth/50",
+          sky: "from-blue-800/70 via-purple-700/50 to-pink-600/30",
+          ground: "from-purple-800/20 to-blue-800/10",
         };
       case "evening":
         return {
-          sky: "from-ghibli-blossom/70 to-ghibli-field/60",
-          ground: "from-ghibli-earth/60 to-ghibli-forest/50",
+          sky: "from-purple-900/80 via-pink-800/60 to-orange-700/40",
+          ground: "from-purple-900/30 to-blue-900/20",
         };
       case "night":
         return {
-          sky: "from-blue-900/80 to-indigo-900/70",
-          ground: "from-gray-800/60 to-gray-900/50",
+          sky: "from-blue-950/90 via-purple-900/70 to-indigo-900/50",
+          ground: "from-blue-950/40 to-purple-950/30",
         };
       default:
         return {
-          sky: "from-ghibli-sky to-ghibli-sky/60",
-          ground: "from-ghibli-forest/70 to-ghibli-earth/50",
+          sky: "from-blue-800/70 via-purple-700/50 to-pink-600/30",
+          ground: "from-purple-800/20 to-blue-800/10",
         };
     }
   };
@@ -89,40 +89,58 @@ const GhibliBackground: React.FC = () => {
     const iconColor = timeOfDay === "night" ? "#E2E8F0" : "#2D3748";
     
     if (weather === "rainy") {
-      return <CloudRain size={iconSize} className="text-gray-600 animate-pulse" />;
+      return <CloudRain size={iconSize} className="text-white/60 animate-pulse" />;
     }
     
     if (weather === "cloudy") {
       if (timeOfDay === "night") {
-        return <CloudMoon size={iconSize} className="text-gray-300" />;
+        return <CloudMoon size={iconSize} className="text-white/70" />;
       }
-      return <CloudSun size={iconSize} className="text-yellow-400" />;
+      return <CloudSun size={iconSize} className="text-white/70" />;
     }
     
     // Clear weather
     if (timeOfDay === "night") {
-      return <Moon size={iconSize} className="text-gray-200" />;
+      return <Moon size={iconSize} className="text-white/70" />;
     }
-    return <Sun size={iconSize} className="text-yellow-500" />;
+    return <Sun size={iconSize} className="text-white/70" />;
   };
 
-  // Determine display based on time of day and weather
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Sky gradient */}
+      {/* Lovable-style animated gradient background */}
       <div className={`absolute inset-0 bg-gradient-to-b ${bgColors.sky} transition-colors duration-5000`} />
       
-      {/* Cloud animations */}
+      {/* Floating particles/stars effect */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <div 
+            key={i}
+            className="absolute rounded-full bg-white animate-float"
+            style={{
+              width: `${Math.random() * 4 + 1}px`,
+              height: `${Math.random() * 4 + 1}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5 + 0.1,
+              animationDuration: `${Math.random() * 10 + 10}s`,
+              animationDelay: `${Math.random() * 10}s`
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Cloud animations - made more subtle */}
       {(weather === "cloudy" || weather === "rainy") && (
         <>
-          <div className="absolute top-10 left-10 animate-float opacity-70">
-            <Cloud size={72} className="text-white/70" />
+          <div className="absolute top-10 left-10 animate-float opacity-30">
+            <Cloud size={72} className="text-white" />
           </div>
-          <div className="absolute top-24 left-1/3 animate-float opacity-80" style={{ animationDelay: "1s" }}>
-            <Cloud size={48} className="text-white/80" />
+          <div className="absolute top-24 left-1/3 animate-float opacity-20" style={{ animationDelay: "1s" }}>
+            <Cloud size={48} className="text-white" />
           </div>
-          <div className="absolute top-16 right-1/4 animate-float opacity-60" style={{ animationDelay: "2s" }}>
-            <Cloud size={64} className="text-white/60" />
+          <div className="absolute top-16 right-1/4 animate-float opacity-25" style={{ animationDelay: "2s" }}>
+            <Cloud size={64} className="text-white" />
           </div>
         </>
       )}
@@ -132,17 +150,17 @@ const GhibliBackground: React.FC = () => {
         {getWeatherIcon()}
       </div>
       
-      {/* Rain effect */}
+      {/* Rain effect - made more subtle */}
       {weather === "rainy" && (
         <div className="absolute inset-0 pointer-events-none">
-          {[...Array(40)].map((_, i) => (
+          {[...Array(30)].map((_, i) => (
             <div 
               key={i}
-              className="absolute w-0.5 bg-blue-200/40 rounded-full animate-rainfall"
+              className="absolute w-0.5 bg-white/20 rounded-full animate-rainfall"
               style={{ 
                 left: `${Math.random() * 100}%`,
                 top: `-20px`,
-                height: `${Math.random() * 20 + 15}px`,
+                height: `${Math.random() * 15 + 10}px`,
                 animationDuration: `${Math.random() * 1.5 + 1}s`,
                 animationDelay: `${Math.random() * 2}s`
               }}
@@ -151,52 +169,15 @@ const GhibliBackground: React.FC = () => {
         </div>
       )}
       
-      {/* Ground/hills gradient */}
-      <div className={`absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t ${bgColors.ground} transition-colors duration-5000`}>
-        <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-ghibli-earth/40 to-transparent" />
+      {/* Ground gradient - more subtle */}
+      <div className={`absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t ${bgColors.ground} transition-colors duration-5000`}>
+        <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-purple-950/30 to-transparent" />
       </div>
       
-      {/* Simple house silhouette */}
-      <div className="absolute bottom-10 left-10 md:left-20 w-40 h-32 transition-all duration-5000">
-        <div className="relative w-full h-full">
-          {/* House body */}
-          <div className="absolute bottom-0 left-0 w-28 h-20 bg-amber-950/80 rounded-sm shadow-lg" />
-          
-          {/* House roof */}
-          <div className="absolute bottom-20 left-0 w-0 h-0 border-l-[14px] border-l-transparent border-b-[10px] border-b-red-900/90 border-r-[14px] border-r-transparent" style={{ transform: 'scale(3.5)' }} />
-          
-          {/* Window with light */}
-          <div className={`absolute bottom-10 left-10 w-6 h-6 ${timeOfDay === "night" || timeOfDay === "evening" ? "bg-yellow-300/80" : "bg-blue-200/50"} rounded-sm shadow-inner`} />
-          
-          {/* Chimney */}
-          <div className="absolute bottom-24 right-6 w-4 h-10 bg-gray-700/80 rounded-t-sm" />
-          
-          {/* Smoke from chimney */}
-          {(timeOfDay === "morning" || timeOfDay === "evening") && (
-            <>
-              <div className="absolute bottom-32 right-6 w-3 h-3 bg-gray-300/40 rounded-full animate-float" />
-              <div className="absolute bottom-36 right-4 w-4 h-4 bg-gray-300/30 rounded-full animate-float" style={{ animationDelay: "0.5s" }} />
-              <div className="absolute bottom-40 right-2 w-5 h-5 bg-gray-300/20 rounded-full animate-float" style={{ animationDelay: "1s" }} />
-            </>
-          )}
-        </div>
-      </div>
-      
-      {/* Trees */}
-      <div className="absolute bottom-10 right-10 md:right-20 w-20 h-32">
-        <div className="absolute bottom-0 left-0 w-8 h-20">
-          <div className="absolute bottom-0 left-3 w-2 h-10 bg-amber-900/80 rounded-sm" />
-          <div className="absolute bottom-8 left-0 w-8 h-8 bg-ghibli-forest/80 rounded-full" />
-          <div className="absolute bottom-12 left-1 w-6 h-6 bg-ghibli-forest/80 rounded-full" />
-          <div className="absolute bottom-16 left-2 w-4 h-4 bg-ghibli-forest/80 rounded-full" />
-        </div>
-        
-        <div className="absolute bottom-0 right-0 w-8 h-16">
-          <div className="absolute bottom-0 left-3 w-2 h-6 bg-amber-900/80 rounded-sm" />
-          <div className="absolute bottom-5 left-0 w-8 h-8 bg-ghibli-forest/80 rounded-full" />
-          <div className="absolute bottom-9 left-1 w-6 h-6 bg-ghibli-forest/80 rounded-full" />
-        </div>
-      </div>
+      {/* Simple decorative glow elements */}
+      <div className="absolute bottom-20 left-1/4 w-32 h-32 rounded-full bg-pink-500/10 blur-3xl" />
+      <div className="absolute top-40 right-1/3 w-40 h-40 rounded-full bg-blue-500/10 blur-3xl" />
+      <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-purple-500/10 blur-3xl" />
     </div>
   );
 };
