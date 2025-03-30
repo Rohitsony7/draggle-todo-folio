@@ -68,6 +68,9 @@ const TaskList: React.FC<TaskListProps> = ({ list }) => {
     setDeleteDialogOpen(false);
   };
 
+  // Check if this is the "To Do" list - only it should have the add task form
+  const isToDoList = list.name === "To Do";
+
   return (
     <div className="bg-white/40 backdrop-blur-sm rounded-xl shadow-md w-72 max-h-[90vh] flex flex-col">
       {/* List Header */}
@@ -172,26 +175,28 @@ const TaskList: React.FC<TaskListProps> = ({ list }) => {
         )}
       </Droppable>
 
-      {/* Add Task Form */}
-      <div className="p-3 border-t">
-        <form onSubmit={handleAddTask} className="flex items-center">
-          <Input
-            type="text"
-            placeholder="Add a task..."
-            value={newTaskContent}
-            onChange={(e) => setNewTaskContent(e.target.value)}
-            className="flex-1 py-1 text-sm ghibli-input"
-          />
-          <Button
-            type="submit"
-            disabled={!newTaskContent.trim()}
-            size="sm"
-            className="ml-2 bg-ghibli-sky hover:bg-ghibli-sky/90"
-          >
-            <Plus className="h-4 w-4" />
-          </Button>
-        </form>
-      </div>
+      {/* Add Task Form - Only show for the "To Do" list */}
+      {isToDoList && (
+        <div className="p-3 border-t">
+          <form onSubmit={handleAddTask} className="flex items-center">
+            <Input
+              type="text"
+              placeholder="Add a task..."
+              value={newTaskContent}
+              onChange={(e) => setNewTaskContent(e.target.value)}
+              className="flex-1 py-1 text-sm ghibli-input"
+            />
+            <Button
+              type="submit"
+              disabled={!newTaskContent.trim()}
+              size="sm"
+              className="ml-2 bg-ghibli-sky hover:bg-ghibli-sky/90"
+            >
+              <Plus className="h-4 w-4" />
+            </Button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
