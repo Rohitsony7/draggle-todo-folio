@@ -1,4 +1,3 @@
-
 import React from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useTaskContext } from "@/context/TaskContext";
@@ -6,6 +5,7 @@ import TaskList from "./TaskList";
 import TagManager from "./TagManager";
 import GhibliHeader from "./GhibliHeader";
 import GhibliBackground from "./GhibliBackground";
+import GhibliFooter from "./GhibliFooter";
 
 const GhibliToDo: React.FC = () => {
   const { taskLists, moveTask } = useTaskContext();
@@ -69,13 +69,11 @@ const GhibliToDo: React.FC = () => {
                 <p className="text-sm text-gray-600">Organize your tasks with the magic of Ghibli</p>
               </div>
             </div>
-            
-            <div className="mt-6 text-xs text-center text-gray-500">
-              Inspired by the enchanting worlds of Studio Ghibli
-            </div>
           </div>
         </div>
       </div>
+      
+      <GhibliFooter />
     </div>
   );
 };
