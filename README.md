@@ -3,7 +3,7 @@
 Welcome to your **Ghibli-inspired To-Do App** – a cozy, magical way to stay organized! ✨
 
 ## 📌 Project Info  
-**Live URL**: [Your Project Link](https://draggle-todo-folio.vercel.app/ )  
+**Live URL**: [URL](https://draggle-todo-folio.vercel.app/ )  
 
 ## 🛠 How to Set Up and Run the Project
 
@@ -24,17 +24,8 @@ npm install
 npm run dev  
 ```
 
-### **2️⃣ Edit Directly on GitHub**  
-- Open the repository on GitHub  
-- Navigate to the desired file  
-- Click the **Edit** button (pencil icon)  
-- Make changes and commit directly  
 
-### **3️⃣ Use GitHub Codespaces**  
-- Open your repository on GitHub  
-- Click the **Code** button  
-- Select **Codespaces** and start a new one  
-- Edit files and commit changes directly from your browser  
+
 
 ---
 
