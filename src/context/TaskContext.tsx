@@ -1,8 +1,7 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Task, TaskList, Tag, Priority } from "../types";
 import { v4 as uuidv4 } from "uuid";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 interface TaskContextType {
   taskLists: TaskList[];
@@ -26,7 +25,6 @@ interface TaskContextType {
   sendEmailReminder: (listId: string, taskId: string) => void;
 }
 
-// Default values
 const defaultTags: Tag[] = [
   { id: uuidv4(), name: 'Work', color: '#f6e7a3' },
   { id: uuidv4(), name: 'Personal', color: '#b0d8b2' },
@@ -83,7 +81,6 @@ const defaultTaskLists: TaskList[] = [
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Try to load data from localStorage
   const savedTaskLists = localStorage.getItem('ghibliTaskLists');
   const savedTags = localStorage.getItem('ghibliTags');
 
@@ -94,13 +91,11 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     savedTags ? JSON.parse(savedTags) : defaultTags
   );
 
-  // Save to localStorage whenever data changes
   useEffect(() => {
     localStorage.setItem('ghibliTaskLists', JSON.stringify(taskLists));
     localStorage.setItem('ghibliTags', JSON.stringify(allTags));
   }, [taskLists, allTags]);
 
-  // Simulate sending email
   const sendEmailReminder = (listId: string, taskId: string) => {
     setTaskLists((prev) => 
       prev.map((list) => {
@@ -115,7 +110,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
                   updatedAt: new Date()
                 };
                 
-                // Show toast notification
                 toast("Email reminder sent", {
                   description: `Reminder sent to ${task.emailReminder} for: ${task.content}`,
                 });
@@ -237,16 +231,13 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setTaskLists(prev => {
       const newLists = [...prev];
       
-      // Find the source and destination lists
       const sourceListIndex = newLists.findIndex(list => list.id === sourceListId);
       const destListIndex = newLists.findIndex(list => list.id === destinationListId);
       
       if (sourceListIndex === -1 || destListIndex === -1) return prev;
       
-      // Get the task to move
       const [removedTask] = newLists[sourceListIndex].tasks.splice(sourceIndex, 1);
       
-      // Insert at the new location
       newLists[destListIndex].tasks.splice(destinationIndex, 0, {
         ...removedTask,
         updatedAt: new Date()
@@ -268,7 +259,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const deleteTag = (id: string) => {
     setAllTags(prev => prev.filter(tag => tag.id !== id));
     
-    // Also remove this tag from all tasks
     setTaskLists(prev => 
       prev.map(list => ({
         ...list,
@@ -288,7 +278,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     
     setAllTags(updatedTags);
     
-    // Update this tag in all tasks
     setTaskLists(prev => 
       prev.map(list => ({
         ...list,
@@ -311,7 +300,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
             ...list,
             tasks: list.tasks.map(task => {
               if (task.id === taskId) {
-                // Only add if tag isn't already present
                 if (!task.tags.some(t => t.id === tag.id)) {
                   return {
                     ...task,
