@@ -5,6 +5,7 @@ import { useTaskContext } from "@/context/TaskContext";
 import TaskList from "./TaskList";
 import TagManager from "./TagManager";
 import GhibliHeader from "./GhibliHeader";
+import GhibliBackground from "./GhibliBackground";
 
 const GhibliToDo: React.FC = () => {
   const { taskLists, moveTask } = useTaskContext();
@@ -36,6 +37,7 @@ const GhibliToDo: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <GhibliBackground />
       <GhibliHeader />
       
       <div className="container mx-auto px-4 py-8 flex-1 max-w-7xl">

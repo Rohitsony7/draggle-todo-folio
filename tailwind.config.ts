@@ -98,17 +98,32 @@ export default {
 				'gentle-spin': {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
+				},
+				'rainfall': {
+					'0%': { 
+						transform: 'translateY(0) translateX(0)',
+						opacity: '0' 
+					},
+					'10%': { opacity: '1' },
+					'100%': { 
+						transform: 'translateY(100vh) translateX(20px)',
+						opacity: '0' 
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 6s ease-in-out infinite',
-				'gentle-spin': 'gentle-spin 12s linear infinite'
+				'gentle-spin': 'gentle-spin 12s linear infinite',
+				'rainfall': 'rainfall 1.5s linear infinite'
 			},
 			backgroundImage: {
 				'ghibli-gradient': 'linear-gradient(to bottom, rgba(168, 216, 234, 0.4), rgba(176, 216, 178, 0.3))',
-			}
+			},
+			transitionDuration: {
+                '5000': '5000ms',
+            }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

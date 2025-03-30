@@ -90,9 +90,8 @@
   }
 
   body {
-    @apply bg-ghibli-sky/30 text-foreground bg-ghibli-gradient;
-    background-attachment: fixed;
-    background-size: cover;
+    @apply text-foreground;
+    /* Removed the background styles since we're now using our animated background */
   }
 
   /* Ghibli-inspired custom scrollbar */
