@@ -1,69 +1,68 @@
-# Welcome to your Lovable project
+# 🌿 Ghibli-Themed To-Do App
 
-## Project info
+Welcome to your **Ghibli-inspired To-Do App** – a cozy, magical way to stay organized! ✨
 
-**URL**: https://lovable.dev/projects/ec62d997-615d-420b-99f4-57351bfc9fe0
+## 📌 Project Info  
+**Live URL**: [Your Project Link](https://draggle-todo-folio.vercel.app/ )  
 
-## How can I edit this code?
+## 🛠 How to Set Up and Run the Project
 
-There are several ways of editing your application.
+You can edit and modify this application using your preferred development setup.  
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/ec62d997-615d-420b-99f4-57351bfc9fe0) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+### **1️⃣ Clone and Run Locally**  
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository  
+git clone <YOUR_GIT_URL>  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory  
+cd <YOUR_PROJECT_NAME>  
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies  
+npm install  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Start the development server  
+npm run dev  
 ```
 
-**Edit a file directly in GitHub**
+### **2️⃣ Edit Directly on GitHub**  
+- Open the repository on GitHub  
+- Navigate to the desired file  
+- Click the **Edit** button (pencil icon)  
+- Make changes and commit directly  
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### **3️⃣ Use GitHub Codespaces**  
+- Open your repository on GitHub  
+- Click the **Code** button  
+- Select **Codespaces** and start a new one  
+- Edit files and commit changes directly from your browser  
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🚀 Tech Stack  
+This project is built using modern web technologies:  
 
-## What technologies are used for this project?
+- **Vite** ⚡ (Fast build tool)  
+- **TypeScript** 🛠 (Typed JavaScript)  
+- **React** ⚛️ (Component-based UI)  
+- **Shadcn-UI** 🖌 (Beautiful pre-styled components)  
+- **Tailwind CSS** 🎨 (Utility-first styling)  
 
-This project is built with .
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🌍 How to Deploy  
 
-## How can I deploy this project?
+You can deploy your project using **Netlify, Vercel, or GitHub Pages**.  
 
-Simply open [Lovable](https://lovable.dev/projects/ec62d997-615d-420b-99f4-57351bfc9fe0) and click on Share -> Publish.
+For example, using Vercel:  
+```sh
+# Install Vercel CLI
+npm install -g vercel
 
-## I want to use a custom domain - is that possible?
+# Deploy the project
+vercel
+```
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+---
+
+🔥 **Enjoy your Ghibli-inspired productivity journey!** ✨
+
